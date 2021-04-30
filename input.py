@@ -14,9 +14,19 @@ class MyGridLayout(GridLayout):
 
         # Set columns
         self.cols = 1
+        # Bendri parametrai.
+        self.row_force_default=True
+        self.row_default_height=120
+        self.col_force_default=True
+        self.col_default_width=100
 
         # Create a second gridlayout
-        self.top_grid = GridLayout()
+        self.top_grid = GridLayout(
+            # Bendri parametrai visam gridui.
+            row_force_default=True,
+            row_default_height=40,
+            col_force_default=True,
+            col_default_width=100)
         self.top_grid.cols = 2
 
         # Add widgets
@@ -39,7 +49,14 @@ class MyGridLayout(GridLayout):
         self.add_widget(self.top_grid)
 
         # Create a Submit Button
-        self.submit = Button(text="Submit", font_size=32)
+        self.submit = Button(text="Submit",
+        # Galima parametrus įrašyti individualiai kiekvienam elementui arba bendrai.
+        # Aukščiau yra pavyzdys su bendru įrašymu.
+            font_size=32,
+            size_hint_y = None,     # Tai yra privaloma eilutė jei nori keisti aukštį. (keistas dalykas apie kivy)
+            height=50,
+            size_hint_x = None,     # Tai yra privaloma eilutė jei nori keisti plotį. (keistas dalykas apie kivy)
+            width=200)
         # Bind the button
         self.submit.bind(on_press=self.press)
         self.add_widget(self.submit)
