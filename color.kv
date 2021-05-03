@@ -1,0 +1,43 @@
+#:kivy 2.0
+#:import utils kivy.utils
+<MyGridLayout>
+
+    name:name
+    pizza:pizza
+    color:color
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        GridLayout:
+            cols:2
+
+            Label:
+                text: "Name"
+            TextInput:
+                id: name
+                multiline:False
+                background_color: utils.get_color_from_hex('#682191')
+
+            Label:
+                text: "Favorite Pizza"
+            TextInput:
+                id: pizza
+                multiline:False
+
+            Label:
+                text: "Favorite Color"
+            TextInput:
+                id: color
+                multiline:False
+
+        Button:
+            text: "Submit"
+            font_size: 32
+            on_press: root.press()
+            #RGB - A
+            background_normal: ''   # TAI NAUDOJAMA, KAD FONA PADARYTI "BLANK", NES IS PRIGIMTIES JIS YRA PILKAS
+            # background_color: (222/255.0, 213/255.0, 115/255.0 ,1)  #PRIE RGB SPALVU KODU REIKIA PRIRASYTI /255 (PADALINTI IS 255)
+
+            background_color: utils.get_color_from_hex('#682191')   #NORINT NAUDOTI HEX CODES REIKIA IMPORTINT UTILS
