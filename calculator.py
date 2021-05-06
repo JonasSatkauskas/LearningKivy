@@ -29,37 +29,47 @@ class MyLayout(Widget):
         else:
             self.ids.calc_input.text = f'{prior}{button}'
 
-    # create addition function
-    def add(self):
+
+    # Create Function to remove last character in text box
+    def remove(self):
+        prior = self.ids.calc_input.text
+        # Remove the last item in the textbox
+        prior = prior[:-1]
+        # Output back to the textbox
+        self.ids.calc_input.text = prior
+
+
+    # Create function to make text box positive or negative
+    def pos_neg(self):
+        prior = self.ids.calc_input.text
+        # Test to see if there's a - sign already
+        if "-" in prior:
+            self.ids.calc_input.text = f'{prior.replace("-", "")}'
+        else:
+            self.ids.calc_input.text = f'-{prior}'
+
+
+    # Create decimal function
+    def dot(self):
+        prior = self.ids.calc_input.text
+
+        if "." in prior:
+            pass
+        else:
+            # Add a decimal to the end of the text
+            prior = f'{prior}.'
+            self.ids.calc_input.text = prior
+            # Output back to the text box
+
+
+    # create math functions
+    def math_sign(self, sign):
         # create a variable that contais whatever was in the text box
         prior = self.ids.calc_input.text
 
         # slap a plus sign to the text box
-        self.ids.calc_input.text = f'{prior}+'
+        self.ids.calc_input.text = f'{prior}{sign}'
 
-    # create subtraction function
-    def subtract(self):
-        # create a variable that contais whatever was in the text box
-        prior = self.ids.calc_input.text
-
-        # slap a plus minus to the text box
-        self.ids.calc_input.text = f'{prior}-'
-
-    # create multiply function
-    def multiply(self):
-        # create a variable that contais whatever was in the text box
-        prior = self.ids.calc_input.text
-
-        # slap a myltiplication sign to the text box
-        self.ids.calc_input.text = f'{prior}*'
-
-    # create divide function
-    def divide(self):
-        # create a variable that contais whatever was in the text box
-        prior = self.ids.calc_input.text
-
-        # slap a divide sign to the text box
-        self.ids.calc_input.text = f'{prior}/'
 
     # create equals to function
     def equals(self):
@@ -68,10 +78,10 @@ class MyLayout(Widget):
         # Addition
         if "+" in prior:
             num_list = prior.split("+")
-            answer = 0
+            answer = 0.0
             # loop thru our list
             for number in num_list:
-                answer = answer + int(number)
+                answer = answer + float(number)
 
             # print the answer in the text box
             self.ids.calc_input.text = str(answer)
