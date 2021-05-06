@@ -10,7 +10,7 @@ Window.size = (500, 700)
 
 
 # DESIGNATE OUR .kv DESIGN FILE
-Builder.load_file('calc.kv')          # PIRMASIS BUDAS
+Builder.load_file('calculator.kv')          # PIRMASIS BUDAS
 
 
 class MyLayout(Widget):
